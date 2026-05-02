@@ -47,6 +47,16 @@ router.post('/', protect, requireRole('freelancer'), async (req, res) => {
 // @desc    Get all proposals for a project
 router.get('/project/:projectId', protect, async (req, res) => {
     try {
+        const project = await Project.findById(req.params.projectId);
+        
+        if (!project) {
+            return res.status(404).json({ message: 'Project not found' });
+        }
+
+        if (project.client.toString() !== req.user._id.toString()) {
+            return res.status(403).json({ message: 'Not authorized to view proposals for this project' });
+        }
+
         const proposals = await Proposal.find({ project: req.params.projectId })
             .populate('freelancer', 'name email skills bio experience')
             .sort({ createdAt: -1 });

@@ -46,6 +46,14 @@ router.post('/', protect, async (req, res) => {
             return res.status(404).json({ message: 'Project not found' });
         }
 
+        const isClient = project.client.toString() === req.user._id.toString();
+        const isFreelancer = project.assignedFreelancer &&
+            project.assignedFreelancer.toString() === req.user._id.toString();
+
+        if (!isClient && !isFreelancer) {
+            return res.status(403).json({ message: 'Not authorized to send messages in this project' });
+        }
+
         // Chat only enabled for assigned projects
         if (project.status === 'Open') {
             return res.status(400).json({ message: 'Chat is not enabled for this project yet' });

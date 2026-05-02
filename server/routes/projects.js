@@ -14,9 +14,10 @@ router.get('/', async (req, res) => {
         if (status) query.status = status;
         if (skills) query.skills = { $in: skills.split(',') };
         if (search) {
+            const escapedSearch = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
             query.$or = [
-                { title: { $regex: search, $options: 'i' } },
-                { description: { $regex: search, $options: 'i' } }
+                { title: { $regex: escapedSearch, $options: 'i' } },
+                { description: { $regex: escapedSearch, $options: 'i' } }
             ];
         }
 
@@ -129,6 +130,14 @@ router.put('/:id/status', protect, async (req, res) => {
 
         if (!project) {
             return res.status(404).json({ message: 'Project not found' });
+        }
+
+        const isClient = project.client.toString() === req.user._id.toString();
+        const isFreelancer = project.assignedFreelancer && 
+            project.assignedFreelancer.toString() === req.user._id.toString();
+
+        if (!isClient && !isFreelancer) {
+            return res.status(403).json({ message: 'Not authorized to update this project status' });
         }
 
         const { status } = req.body;
