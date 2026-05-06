@@ -1,3 +1,4 @@
+// Socket.io configuration for real-time messaging
 const Message = require('./models/Message');
 
 const setupSocket = (io) => {

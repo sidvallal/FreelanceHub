@@ -1,3 +1,4 @@
+// Context provider for user authentication state
 import { createContext, useContext, useState, useEffect } from 'react'
 import API from '../api/axios'
 

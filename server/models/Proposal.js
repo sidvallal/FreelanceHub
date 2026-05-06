@@ -1,3 +1,4 @@
+// Mongoose schema and model for project proposals
 const mongoose = require('mongoose');
 
 const proposalSchema = new mongoose.Schema({

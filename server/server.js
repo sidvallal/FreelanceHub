@@ -1,3 +1,4 @@
+// Main entry point for the Express backend server
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');

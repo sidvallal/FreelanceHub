@@ -1,3 +1,4 @@
+// Express routes for user authentication and profile management
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
@@ -6,6 +7,7 @@ const { protect } = require('../middleware/auth');
 const router = express.Router();
 
 // Generate JWT Token
+// Helper function to generate a JSON Web Token for user authentication
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 };

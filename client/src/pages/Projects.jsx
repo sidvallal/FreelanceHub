@@ -1,3 +1,4 @@
+// Page for browsing all available projects
 import { useState, useEffect } from 'react'
 import API from '../api/axios'
 import ProjectCard from '../components/ProjectCard'

@@ -1,3 +1,4 @@
+// User dashboard showing projects and proposals based on role
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
@@ -5,13 +6,16 @@ import API from '../api/axios'
 import ProjectCard from '../components/ProjectCard'
 import { FiPlusCircle, FiBriefcase, FiClock, FiCheckCircle, FiSend, FiTrendingUp } from 'react-icons/fi'
 
+// Component for displaying the main dashboard, showing different data based on user role (client vs freelancer)
 export default function Dashboard() {
   const { user } = useAuth()
   const [projects, setProjects] = useState([])
   const [proposals, setProposals] = useState([])
   const [loading, setLoading] = useState(true)
 
+  // Fetches initial data (projects and proposals) for the dashboard
   useEffect(() => {
+    // Helper function to fetch data from the API
     const fetchData = async () => {
       try {
         if (user.role === 'client') {

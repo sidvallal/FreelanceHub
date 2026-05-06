@@ -1,6 +1,8 @@
+// Wrapper component for handling route protection and authorization
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
+// Protects routes from unauthorized access by checking user authentication and roles
 export default function ProtectedRoute({ children, roles }) {
   const { user, loading } = useAuth()
 

@@ -1,3 +1,4 @@
+// Express routes for submitting and managing project proposals
 const express = require('express');
 const Proposal = require('../models/Proposal');
 const Project = require('../models/Project');

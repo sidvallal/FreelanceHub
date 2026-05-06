@@ -1,3 +1,4 @@
+// Mongoose schema and model for chat messages
 const mongoose = require('mongoose');
 
 const messageSchema = new mongoose.Schema({

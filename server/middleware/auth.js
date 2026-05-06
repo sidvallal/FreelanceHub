@@ -1,3 +1,4 @@
+// Middleware for verifying JWT tokens and user authentication
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 

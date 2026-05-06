@@ -1,3 +1,4 @@
+// Database connection configuration for MongoDB
 const mongoose = require('mongoose');
 
 const connectDB = async () => {

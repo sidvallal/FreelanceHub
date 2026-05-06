@@ -1,7 +1,9 @@
+// Page for viewing and editing user profile information
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { FiUser, FiSave, FiCode, FiFileText, FiBriefcase, FiLink } from 'react-icons/fi'
 
+// Component for viewing and updating user profile information
 export default function Profile() {
   const { user, updateProfile } = useAuth()
   const [form, setForm] = useState({
@@ -17,6 +19,7 @@ export default function Profile() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  // Adds a new skill to the user's skill list
   const addSkill = () => {
     const skill = skillInput.trim()
     if (skill && !form.skills.includes(skill)) {
@@ -25,10 +28,12 @@ export default function Profile() {
     }
   }
 
+  // Removes a specified skill from the user's skill list
   const removeSkill = (skill) => {
     setForm({ ...form, skills: form.skills.filter(s => s !== skill) })
   }
 
+  // Triggers adding a skill when the Enter key is pressed
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault()
@@ -36,6 +41,7 @@ export default function Profile() {
     }
   }
 
+  // Handles the form submission to save profile updates
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')

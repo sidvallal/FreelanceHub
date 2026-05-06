@@ -1,3 +1,4 @@
+// Express routes for project creation and retrieval
 const express = require('express');
 const Project = require('../models/Project');
 const { protect, requireRole } = require('../middleware/auth');

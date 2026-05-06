@@ -1,3 +1,4 @@
+// Express routes for handling chat messages
 const express = require('express');
 const Message = require('../models/Message');
 const Project = require('../models/Project');

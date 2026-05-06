@@ -1,3 +1,4 @@
+// Main application component and route definitions
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import Navbar from './components/Navbar'

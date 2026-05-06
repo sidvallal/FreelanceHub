@@ -1,3 +1,4 @@
+// Component for displaying a summary of a project
 import { Link } from 'react-router-dom'
 import { FiDollarSign, FiCalendar, FiArrowRight } from 'react-icons/fi'
 

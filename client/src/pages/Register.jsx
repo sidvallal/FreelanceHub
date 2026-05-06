@@ -1,8 +1,10 @@
+// Page for new user registration
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { FiUser, FiMail, FiLock, FiUserPlus } from 'react-icons/fi'
 
+// Component for user registration, allowing users to sign up as freelancers or clients
 export default function Register() {
   const { register } = useAuth()
   const navigate = useNavigate()
@@ -12,6 +14,7 @@ export default function Register() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  // Handles the form submission for registering a new user
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
